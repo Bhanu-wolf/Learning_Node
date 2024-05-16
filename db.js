@@ -7,7 +7,20 @@ require("dotenv").config();
 const mongoURL = process.env.MOONGO_DB_URL;
 
 //setup mongoose connection
-(async() => {
+// (async() => {
+//     try {
+//         await mongoose.connect(mongoURL, {
+//             useNewUrlParser: true,
+//             useUnifiedTopology: true,
+//         });
+//         console.log('db connected');
+//     } catch (err) {
+//         console.log('db not connected', err);
+
+//     }
+// })();
+
+const connectDatabase = async() => {
     try {
         await mongoose.connect(mongoURL, {
             useNewUrlParser: true,
@@ -18,7 +31,7 @@ const mongoURL = process.env.MOONGO_DB_URL;
         console.log('db not connected', err);
 
     }
-})();
+}
 
 //function to start server
 
@@ -43,4 +56,4 @@ db.on("error", (err) => {
     }
 });
 
-module.exports = db;
+module.exports = { db, connectDatabase };

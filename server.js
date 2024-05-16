@@ -190,7 +190,7 @@
 
 const express = require("express");
 const app = express();
-const db = require("./db");
+const { db, connectDatabase } = require("./db");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
@@ -210,7 +210,13 @@ const menuRoute = require("./routes/menuRoutes");
 app.use("/person", personRoute);
 app.use("/menu", menuRoute);
 
-
+(async() => {
+    try {
+        connectDatabase();
+    } catch (err) {
+        console.log("Not Connected to database", err);
+    }
+})();
 
 app.listen(PORT, () => {
     console.log("listening on port 3000");
