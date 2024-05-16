@@ -213,6 +213,7 @@ app.use("/menu", menuRoute);
 (async() => {
     try {
         connectDatabase();
+        console.log('connected database server mai call function');
     } catch (err) {
         console.log("Not Connected to database", err);
     }
