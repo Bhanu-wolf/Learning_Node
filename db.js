@@ -8,11 +8,20 @@ const mongoURL = process.env.MOONGO_DB_URL;
 
 //setup mongoose connection
 (async() => {
-    await mongoose.connect(mongoURL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+    try {
+        await mongoose.connect(mongoURL, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('db connected');
+    } catch (err) {
+        console.log('db not connected', err);
+
+    }
 })();
+
+//function to start server
+
 
 //get the default connection
 //Mongoose maintains a default connections object representing the MongoDB connection.
