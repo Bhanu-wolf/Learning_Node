@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 //MongoDB connection URL
-//const mongoURL = process.env.MOONGO_DB_URL_LOCAL;
-const mongoURL = process.env.MOONGO_DB_URL;
+const mongoURL = process.env.MOONGO_DB_URL_LOCAL;
+// const mongoURL = process.env.MOONGO_DB_URL;
 
 //setup mongoose connection
 // (async() => {
@@ -21,17 +21,18 @@ const mongoURL = process.env.MOONGO_DB_URL;
 // })();
 
 const connectDatabase = async() => {
-    try {
-        await mongoose.connect(mongoURL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('db connected');
-    } catch (err) {
-        console.log('db not connected', err);
+        try {
+            await mongoose.connect(mongoURL, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            });
+            console.log('db connected');
+        } catch (err) {
+            console.log('db not connected', err);
 
+        }
     }
-}
+    // connectDatabase();
 
 //function to start server
 

@@ -210,15 +210,19 @@ const menuRoute = require("./routes/menuRoutes");
 app.use("/person", personRoute);
 app.use("/menu", menuRoute);
 
+
 (async() => {
     try {
-        connectDatabase();
-        console.log('connected database server mai call function');
+        await connectDatabase();
+        app.listen(PORT, () => {
+            console.log("listening on port 3000");
+        });
+        console.log("connected database server mai call function");
     } catch (err) {
         console.log("Not Connected to database", err);
     }
 })();
 
-app.listen(PORT, () => {
-    console.log("listening on port 3000");
-});
+// app.listen(PORT, () => {
+//     console.log("listening on port 3000");
+// });
